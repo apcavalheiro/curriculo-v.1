@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: curriculo
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: adria
+Implementation-Vendor-Id: xyz.cavalheiro
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/curriculo/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

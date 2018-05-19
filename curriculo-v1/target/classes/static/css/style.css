@@ -1,0 +1,10 @@
+body {
+  padding: 70px;
+}
+p {
+	text-align:justify;
+}
+#rodape-inicio a:link, a:visited {
+	
+    text-decoration: none;
+}

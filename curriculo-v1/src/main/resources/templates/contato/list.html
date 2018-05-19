@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<title>Curriculo - Recados</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-sm fixed-top bg-dark navbar-dark">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/contatos/cadastro">Contato</a></li>
+			</ul>
+			<a class="btn btn-warning btn-md flush-right " href="#" role="button">Sair</a>
+		</nav>
+		<h4>Recados</h4>
+		<div th:if="${contatos != null}">		
+			<div th:if="${mensagem != null}">
+				<div class="alert alert-info" role="alert">
+					<span th:text="${mensagem}">mensagem</span>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Email</th>
+							<th>Recado</th>
+						</tr>
+					</thead>
+					<tr th:each="contato : ${contatos}">
+						<td th:text="${contato.nome}">nome</td>
+						<td th:text="${contato.email}">email</td>
+						<td th:text="${contato.recado}">recado</td>
+						<td><a class="btn btn-sm btn-info"
+							th:href="@{/contatos/{id}/atualizar(id=${contato.id})}">Editar</a>
+							<a class="btn btn-sm btn-danger"
+							th:href="@{/contatos/{id}/remover(id=${contato.id})}">Excluir</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div th:if="${#lists.isEmpty(contatos)}">
+			<div class="alert alert-info" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign"></span>
+				<p>0 contatos!</p>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<hr />
+				<span class="text-muted">&copy;2018 Adriano Cavalheiro</span>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

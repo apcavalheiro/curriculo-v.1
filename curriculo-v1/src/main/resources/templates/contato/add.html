@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Curriculo - Contato</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container">
+		<nav class="navbar navbar-expand-sm fixed-top bg-dark navbar-dark">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+				<li class="nav-item"><a class="nav-link" href="/contatos/cadastro">Contato</a></li>
+			</ul>
+		</nav>
+		<h4>Contato</h4>
+
+		<div th:if="${mensagem != null}">
+			<div class="alert alert-info" role="alert">
+				<span th:text="${mensagem}">mensagem</span>
+			</div>
+		</div>
+
+		<form th:action="@{/contatos/salvar}"
+			th:method="${contato.id} == null ? post : put" th:object="${contato}">
+			<div class="row">
+				<input id="id" type="hidden" th:field="*{id}" />
+				<div class="form-group col-md-4">
+					<label for="nome">Nome:</label> <input class="form-control"
+						id="nome" type="text" th:field="*{nome}" />
+					<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+				</div>
+
+				<div class="form-group col-md-8">
+					<label for="email">Email:</label> <input class="form-control"
+						id="email" type="email" th:field="*{email}" />
+					<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="recado">Deixe seu recado:</label>
+				<textarea class="form-control" rows="5" id="recado"
+					th:field="*{recado}" style="resize: none;"></textarea>
+				<div th:if="${#fields.hasErrors('recado')}" th:errors="*{recado}"></div>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Enviar</button>
+			</div>
+
+		</form>
+		<hr />
+		<footer class="footer">
+			<span class="text-muted">&copy; 2018 Adriano Cavalheiro</span>
+		</footer>
+
+	</div>
+</body>
+</html>
